@@ -1,0 +1,142 @@
+body{
+    background-color: #1c1c1c;
+	display: grid;
+	margin: 0;
+	overflow: hidden;
+    min-height: 100vh;
+    background-image: url('img/night_sky_star.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+     background-position: center;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#catBtn{
+    font-size: 200px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button:hover{
+    text-shadow: -4px 0 #c48211, 0 4px #c48211, 4px 0 #c48211, 0 -4px #c48211;
+}
+
+button:hover #firstP{
+    display: flex;
+    font-size: 30px;
+    width: 300px;
+    height: 50px;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    position: absolute;
+    top: 50%;
+    left:55%;
+    font-family: cursive;
+    transform: translate(-23%, -100%);
+    text-align: center;
+}
+
+p{
+    display: none;
+}
+
+.cat{
+    position:fixed;
+    top: 1vh;
+    font-size: 50px;
+    transition: transform 3s;
+    background: linear-gradient(-45deg, #5F91FF, rgba(0, 255, 0, 0));
+    border-radius: 999px;
+    filter: drop-shadow(0 0 6px #699BFF);
+    animation: catRain 2s linear forwards;
+}
+
+
+@keyframes catRain{
+    to{
+        transform: translateY(100vh) rotateZ(-70deg);
+    }
+}
+
+
+#catBtn:active #firstP{
+    display: none;
+}
+
+#catBtn:active:hover #secondP{
+    display: flex;
+}
+
+#catBtn:active:hover #thirdP{
+    display: none;
+}
+
+#catBtn:active #thirdP{
+    display: flex;
+    text-shadow: -4px 0 #c48211, 4px 0 #c48211, 0 4px #c48211, 0 -4px #c48211;
+}
+
+
+#topLeftBtn{
+    height:30px;
+    width:30px;
+    top: 0;
+    left: 0;
+    display:block;
+    mix-blend-mode: color;
+    position: absolute;
+}
+
+
+.gallery {
+    --g: 8px; /* the gap */
+    
+    display: grid;
+    clip-path: inset(1px); /* to avoid visual glitchs */
+
+    border: 10px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+
+  .gallery > img {
+    --_p: calc(-1*var(--g));
+    grid-area: 1/1;
+    width: 350px; /* control the size */
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: .4s .1s;
+  }
+
+  .gallery > img:first-child {
+    clip-path: polygon(0 0, calc(100% + var(--_p)) 0 , 0 calc(100% + var(--_p)))
+  }
+
+  .gallery > img:last-child {
+    clip-path: polygon(100% 100%, 100% calc(0% - var(--_p)), calc(0% - var(--_p)) 100%)
+  }
+
+  .gallery:hover > img:last-child,
+  .gallery:hover > img:first-child:hover{
+    --_p: calc(50% - var(--g));
+  }
+
+  .gallery:hover > img:first-child,
+  .gallery:hover > img:first-child:hover + img{
+    --_p: calc(-50% - var(--g));
+  }
+  
+  
+  
